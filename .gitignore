@@ -1,0 +1,5 @@
+vendor
+index.php
+server.php
+meilisearch/
+.idea
