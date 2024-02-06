@@ -1,25 +1,26 @@
 {
-    "name": "wbsartori/mvp-meilisearch",
-    "autoload": {
-        "psr-4": {
-            "MvpMeilisearch\\": "src/",
-            "MvpMeilisearch\\Examples\\": "examples/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Wesley Sartori",
-            "email": "wesley.sartori@ixcsoft.com.br"
-        }
-    ],
-    "require": {
-        "meilisearch/meilisearch-php": "^1.6",
-        "guzzlehttp/guzzle": "^7.8",
-        "http-interop/http-factory-guzzle": "^1.0"
-    },
-    "config": {
-        "allow-plugins": {
-            "php-http/discovery": true
-        }
+  "name": "wbsartori/mvp-meilisearch",
+  "autoload": {
+    "psr-4": {
+      "MvpMeilisearch\\": "src/",
+      "MvpMeilisearch\\Examples\\": "examples/"
     }
+  },
+  "authors": [
+    {
+      "name": "Wesley Sartori",
+      "email": "wesley.sartori@ixcsoft.com.br"
+    }
+  ],
+  "require": {
+    "meilisearch/meilisearch-php": "^1.6",
+    "guzzlehttp/guzzle": "^7.8",
+    "http-interop/http-factory-guzzle": "^1.0",
+    "ext-json": "*"
+  },
+  "config": {
+    "allow-plugins": {
+      "php-http/discovery": true
+    }
+  }
 }

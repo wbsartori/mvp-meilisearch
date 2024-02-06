@@ -46,12 +46,17 @@ class DataSearch
         return $meilisearch->getClient()->index($meilisearch->getIndex());
     }
 
-
-    public function getDocumentsById(string $documentId, array $fields = []): string
+    /**
+     * @param string $occurrence
+     * @return string
+     * @throws Exception
+     */
+    public function getDocumentsByString(string $occurrence): string
     {
-        $response = $this->run()->getDocument($documentId, $fields);
-        if ($response) {
-            return $response;
+        $response = $this->run()->search($occurrence);
+
+        if (count($response->getHits()) > 0) {
+            return json_encode(['data' => $response->getHits()]);
         }
 
         throw new Exception(Constants::ERROR_DOCUMENTS);
@@ -78,7 +83,7 @@ class DataSearch
      * @param string $hostname
      * @return void
      */
-    public function setHostname(string $hostname): DataAppender
+    public function setHostname(string $hostname): DataSearch
     {
         $this->hostname = $hostname;
         return $this;
@@ -99,7 +104,7 @@ class DataSearch
      * @param string $port
      * @return $this
      */
-    public function setPort(string $port): DataAppender
+    public function setPort(string $port): DataSearch
     {
         $this->port = $port;
         return $this;
@@ -120,7 +125,7 @@ class DataSearch
      * @param string $masterkey
      * @return $this
      */
-    public function setMasterkey(string $masterkey): DataAppender
+    public function setMasterkey(string $masterkey): DataSearch
     {
         $this->masterkey = $masterkey;
         return $this;
@@ -141,7 +146,7 @@ class DataSearch
      * @param string $indexKey
      * @return $this
      */
-    public function setIndexKey(string $indexKey): DataAppender
+    public function setIndexKey(string $indexKey): DataSearch
     {
         $this->indexKey = $indexKey;
         return $this;
