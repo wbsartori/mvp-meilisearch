@@ -2,7 +2,7 @@
 
 namespace MvpMeilisearch\Services;
 
-use Meilisearch\Client;
+use MeiliSearch\Client;
 use MvpMeilisearch\Constants;
 
 class MeilisearchClient
@@ -30,6 +30,7 @@ class MeilisearchClient
      * @param string $hostname
      * @param string $port
      * @param string $masterkey
+     * @param string $index
      * @return void
      */
     public function init(
@@ -43,7 +44,7 @@ class MeilisearchClient
         $this->setPort($port);
         $this->setMasterKey($masterkey);
         $this->setIndex($index);
-        $this->setClient($hostname, $port, $masterkey);
+        $this->setClient();
     }
 
     /**
@@ -127,19 +128,16 @@ class MeilisearchClient
     }
 
     /**
-     * @param string $hostname
-     * @param string $port
-     * @param string $masterkey
      * @return void
      */
-    public function setClient(string $hostname, string $port, string $masterkey): void
+    public function setClient(): void
     {
         if (!$this->getHostname()) {
-            $this->setHostname('localhost');
+            $this->setHostname(Constants::SERVER_NAME);
         }
 
         if (!$this->getPort()) {
-            $this->setPort('7700');
+            $this->setPort(Constants::SERVER_PORT);
         }
 
         if (!$this->getMasterKey()) {

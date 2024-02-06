@@ -47,16 +47,26 @@ class DataSearch
     }
 
     /**
+     * @param array $query
+     * @return mixed
+     */
+    public function getDocuments(array $query)
+    {
+        return $this->run()->getDocuments($query);
+    }
+
+    /**
      * @param string $occurrence
-     * @return string
+     * @param array $queryParams
+     * @return array
      * @throws Exception
      */
-    public function getDocumentsByString(string $occurrence): string
+    public function getDocumentsByString(string $occurrence, array $queryParams = []): array
     {
-        $response = $this->run()->search($occurrence);
+        $response = $this->run()->search($occurrence, $queryParams);
 
-        if (count($response->getHits()) > 0) {
-            return json_encode(['data' => $response->getHits()]);
+        if (count($response->getIterator()) > 0) {
+            return $response->getHits();
         }
 
         throw new Exception(Constants::ERROR_DOCUMENTS);

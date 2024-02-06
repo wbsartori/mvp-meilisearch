@@ -25,15 +25,16 @@ class DataAppenderExample
 
     /**
      * @param string $documentId
+     * @param array $query
      * @param string $masterKey
      * @return array|void
      */
-    public function getDocument(string $documentId, string $masterKey = '')
+    public function getDocument(string $documentId, array $query = [], string $masterKey = '')
     {
         try {
             $this->dataAppender->setMasterkey($masterKey);
             $this->dataAppender->setIndexKey($documentId);
-            $response = $this->dataAppender->getDocuments();
+            $response = $this->dataAppender->getDocuments($query);
 
             return ['data' => $response->getIterator()];
         } catch (Exception $exception) {
@@ -49,6 +50,15 @@ class DataAppenderExample
      */
     public function addDocument(string $documentId, array $data = [], string $masterKey = ''): void
     {
+        if (empty($data)) {
+            $data = [
+                [
+                    'id' => '3',
+                    'fantasia' => 'Teste Meilisearch 2'
+                ]
+            ];
+        }
+
         try {
             $this->dataAppender->setMasterkey($masterKey);
             $this->dataAppender->setIndexKey($documentId);
@@ -100,12 +110,12 @@ class DataAppenderExample
      * @param string $masterKey
      * @return string
      */
-    public function search(string $documentId, string $occurrence, string $masterKey = ''): string
+    public function search(string $documentId, string $occurrence, string $masterKey = '', $params = []): string
     {
         try {
             $this->dataSearch->setMasterkey($masterKey);
             $this->dataSearch->setIndexKey($documentId);
-            return $this->dataSearch->getDocumentsByString($occurrence);
+            return $this->dataSearch->getDocumentsByString($occurrence, $params);
         } catch (Exception $exception) {
             echo $exception->getMessage();
         }

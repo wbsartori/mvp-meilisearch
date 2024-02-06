@@ -10,4 +10,5 @@ class Constants
     public const SERVER_NAME = 'localhost';
     public const SERVER_PORT = '7700';
     public const SERVER_MASTER_KEY = 'master_key_ixc_999999';
+    public const PRIMARY_KEY = 'id';
 }

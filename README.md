@@ -6,6 +6,15 @@ Acesse a documentação [Meilisearch Pages](https://www.meilisearch.com/docs/learn
 
 ---
 
+### Download Meilisearch
+
+### PHP 7.3
+curl -L https://install.meilisearch.com/v0.21.0 | sh
+
+### PHP 7.4 a 8.0
+curl -L https://install.meilisearch.com | sh
+
+
 #### Server start
 
 
