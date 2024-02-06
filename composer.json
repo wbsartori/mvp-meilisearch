@@ -1,5 +1,10 @@
 {
   "name": "wbsartori/mvp-meilisearch",
+  "type": "library",
+  "description": "Meilisearch Abstraction",
+  "license": "proprietary",
+  "minimum-stability": "stable",
+  "prefer-stable": true,
   "autoload": {
     "psr-4": {
       "MvpMeilisearch\\": "src/",
