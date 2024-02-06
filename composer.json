@@ -2,7 +2,8 @@
     "name": "wbsartori/mvp-meilisearch",
     "autoload": {
         "psr-4": {
-            "MvpMeilisearch\\": "src/"
+            "MvpMeilisearch\\": "src/",
+            "MvpMeilisearch\\Examples\\": "examples/"
         }
     },
     "authors": [

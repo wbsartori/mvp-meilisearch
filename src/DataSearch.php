@@ -3,13 +3,10 @@
 namespace MvpMeilisearch;
 
 use Exception;
-use Meilisearch\Contracts\DeleteTasksQuery;
-use Meilisearch\Contracts\DocumentsQuery;
-use Meilisearch\Contracts\DocumentsResults;
 use Meilisearch\Endpoints\Indexes;
 use MvpMeilisearch\Services\MeilisearchClient;
 
-class DataAppender
+class DataSearch
 {
     /**
      * @var MeilisearchClient
@@ -45,114 +42,16 @@ class DataAppender
             $this->getMasterkey(),
             $this->getIndexKey()
         );
+
         return $meilisearch->getClient()->index($meilisearch->getIndex());
     }
 
-    /**
-     * @return DocumentsResults
-     * @throws Exception
-     */
-    public function getDocuments(): DocumentsResults
-    {
-        $query = new DocumentsQuery();
-        return $this->run()->getDocuments($query);
-    }
 
-    /**
-     * @param array $documents
-     * @return string
-     * @throws Exception
-     */
-    public function addNewDocuments(array $documents): string
+    public function getDocumentsById(string $documentId, array $fields = []): string
     {
-        $response = $this->run()->addDocuments($documents);
+        $response = $this->run()->getDocument($documentId, $fields);
         if ($response) {
-            return Constants::SUCCESS_DOCUMENTS;
-        }
-
-        throw new Exception(Constants::ERROR_DOCUMENTS);
-    }
-
-    /**
-     * @param array $document
-     * @return string
-     * @throws Exception
-     */
-    public function updateDocument(array $document): string
-    {
-        $updateDocument = $this->run()->updateDocuments($document);
-
-        if ($updateDocument) {
-            return Constants::SUCCESS_DOCUMENTS;
-        }
-
-        throw new Exception(Constants::ERROR_DOCUMENTS);
-    }
-
-    /**
-     * @param string $documentId
-     * @return string
-     * @throws Exception
-     */
-    public function deleteDocumentById(string $documentId): string
-    {
-        $response = $this->run()->deleteDocument($documentId);
-
-        if ($response['taskUid'] > 0) {
-            return Constants::SUCCESS_DOCUMENTS;
-        }
-
-        throw new Exception(Constants::ERROR_DOCUMENTS);
-    }
-
-    /**
-     * @return string
-     * @throws Exception
-     */
-    public function deleteAllDocumentsOfIndex(): string
-    {
-        $response = $this->run()->deleteAllDocuments();
-
-        if ($response['taskUid'] > 0) {
-            return Constants::SUCCESS_DOCUMENTS;
-        }
-
-        throw new Exception(Constants::ERROR_DOCUMENTS);
-    }
-
-    /**
-     * @return string
-     * @throws Exception
-     */
-    public function deleteAllDocuments(): string
-    {
-        $response = $this->run()->delete();
-
-        if ($response['taskUid'] > 0) {
-            return Constants::SUCCESS_DOCUMENTS;
-        }
-
-        throw new Exception(Constants::ERROR_DOCUMENTS);
-    }
-
-    /**
-     * @return string
-     * @throws Exception
-     */
-    public function tasksDelete(): string
-    {
-        $tasks = $this->run()->getTasks();
-
-        foreach ($tasks->getIterator() as $task) {
-            $newTask[] = $task['uid'];
-        }
-
-        $deletaTaskQuery = new DeleteTasksQuery();
-        $deletaTaskQuery->setUids($newTask);
-        $response = $this->run()->deleteTasks($deletaTaskQuery);
-
-        if ($response['taskUid'] > 0) {
-            return Constants::SUCCESS_DOCUMENTS;
+            return $response;
         }
 
         throw new Exception(Constants::ERROR_DOCUMENTS);
