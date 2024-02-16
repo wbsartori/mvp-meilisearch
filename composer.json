@@ -27,6 +27,18 @@
   "config": {
     "allow-plugins": {
       "php-http/discovery": true
+    },
+    "platform": {
+      "php": "7.3"
     }
+  },
+  "archive": {
+    "exclude": [
+      "tests",
+      ".gitignore",
+      "docs",
+      ".github",
+      "phpunit.xml"
+    ]
   }
 }
