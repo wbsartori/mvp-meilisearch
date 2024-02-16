@@ -11,23 +11,23 @@ class DataAppender
     /**
      * @var MeilisearchClient
      */
-    private MeilisearchClient $meilisearchClient;
+    private $meilisearchClient;
     /**
      * @var string
      */
-    private string $hostname;
+    private $hostname;
     /**
      * @var string
      */
-    private string $port;
+    private $port;
     /**
      * @var string
      */
-    private string $masterkey;
+    private $masterkey;
     /**
      * @var string
      */
-    private string $indexKey;
+    private $indexKey;
 
     /**
      * @return Indexes

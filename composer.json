@@ -3,8 +3,9 @@
   "type": "library",
   "description": "Meilisearch Abstraction",
   "license": "proprietary",
-  "minimum-stability": "stable",
+  "minimum-stability": "dev",
   "prefer-stable": true,
+  "version": "0.0.1",
   "autoload": {
     "psr-4": {
       "MvpMeilisearch\\": "src/",

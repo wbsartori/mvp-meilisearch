@@ -10,21 +10,21 @@ class MeilisearchClient
     /**
      * @var string
      */
-    private string $hostname;
+    private $hostname;
     /**
      * @var string
      */
-    private string $port;
+    private $port;
     /**
      * @var string
      */
-    private string $masterKey;
+    private $masterKey;
 
-    private Client $client;
+    private $client;
     /**
      * @var string
      */
-    private string $index;
+    private $index;
 
     /**
      * @param string $hostname

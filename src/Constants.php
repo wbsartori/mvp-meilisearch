@@ -5,6 +5,7 @@ namespace MvpMeilisearch;
 class Constants
 {
     public const SUCCESS_DOCUMENTS = 'Operation carried out successfully';
+    public const NOT_FOUND_DOCUMENTS = 'Register not found';
     public const ERROR_DOCUMENTS = 'An error occurred while performing this operation';
     public const PATTERN_INDEX = 'documents';
     public const SERVER_NAME = 'localhost';

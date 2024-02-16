@@ -11,23 +11,23 @@ class DataSearch
     /**
      * @var MeilisearchClient
      */
-    private MeilisearchClient $meilisearchClient;
+    private $meilisearchClient;
     /**
      * @var string
      */
-    private string $hostname;
+    private $hostname;
     /**
      * @var string
      */
-    private string $port;
+    private $port;
     /**
      * @var string
      */
-    private string $masterkey;
+    private $masterkey;
     /**
      * @var string
      */
-    private string $indexKey;
+    private $indexKey;
 
     /**
      * @return Indexes
@@ -69,7 +69,7 @@ class DataSearch
             return $response->getHits();
         }
 
-        throw new Exception(Constants::ERROR_DOCUMENTS);
+        throw new Exception(Constants::NOT_FOUND_DOCUMENTS);
     }
 
     /**
