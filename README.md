@@ -1,8 +1,8 @@
 # mvp-meilisearch
 
-### Download meilisearch 1.6.0
+### Download meilisearch 0.21.0
 
-Acesse a documentação [Meilisearch Pages](https://www.meilisearch.com/docs/learn/getting_started/installation).
+Acesse a documentaÃ§Ã£o [Meilisearch Pages](https://www.meilisearch.com/docs/learn/getting_started/installation).
 
 ---
 
@@ -10,10 +10,6 @@ Acesse a documentação [Meilisearch Pages](https://www.meilisearch.com/docs/learn
 
 ### PHP 7.3
 curl -L https://install.meilisearch.com/v0.21.0 | sh
-
-### PHP 7.4 a 8.0
-curl -L https://install.meilisearch.com | sh
-
 
 #### Server start
 
