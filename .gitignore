@@ -4,3 +4,4 @@ server.php
 meilisearch/
 .idea
 meilisearch/ixcprovedor_clientes.json
+config.yml

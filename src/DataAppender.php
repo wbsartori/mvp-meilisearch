@@ -28,6 +28,10 @@ class DataAppender
      * @var string
      */
     private $indexKey;
+    /**
+     * @var array
+     */
+    private $filtedAttributes = [];
 
     /**
      * @return Indexes
@@ -120,6 +124,15 @@ class DataAppender
         }
 
         throw new Exception(Constants::ERROR_DOCUMENTS);
+    }
+
+    /**
+     * @return void
+     * @throws Exception
+     */
+    public function addFilteredAttributes(): void
+    {
+        $this->run()->updateFilterableAttributes($this->filtedAttributes);
     }
 
     /**
@@ -221,5 +234,15 @@ class DataAppender
             $this->setIndexKey(Constants::PATTERN_INDEX);
         }
         return $this->indexKey;
+    }
+
+    /**
+     * @param array $filtedAttributes
+     * @return $this
+     */
+    public function setFiltedAttributes(array $filtedAttributes): DataAppender
+    {
+        $this->filtedAttributes = $filtedAttributes;
+        return $this;
     }
 }

@@ -90,6 +90,14 @@ class DataSearch
     }
 
     /**
+     * @throws Exception
+     */
+    public function getFilteredAttributes(): array
+    {
+        return $this->run()->getFilterableAttributes();
+    }
+
+    /**
      * @param string $hostname
      * @return void
      */

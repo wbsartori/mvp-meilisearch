@@ -18,20 +18,20 @@
     }
   ],
   "require": {
-    "meilisearch/meilisearch-php": "^v0.21.0",
+    "meilisearch/meilisearch-php": "^v1.6.1",
     "guzzlehttp/guzzle": "^7.8",
     "http-interop/http-factory-guzzle": "^1.0",
     "ext-json": "*"
   },
   "require-dev": {
-    "php": "^7.3"
+    "php": "^7.4"
   },
   "config": {
     "allow-plugins": {
       "php-http/discovery": true
     },
     "platform": {
-      "php": "7.3"
+      "php": "7.4"
     }
   },
   "archive": {

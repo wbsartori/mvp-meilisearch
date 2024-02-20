@@ -34,10 +34,10 @@ class MeilisearchClient
      * @return void
      */
     public function init(
-        string $hostname = Constants::SERVER_NAME,
-        string $port = Constants::SERVER_PORT,
-        string $masterkey = Constants::SERVER_MASTER_KEY,
-        string $index = Constants::PATTERN_INDEX
+        string $hostname = '',
+        string $port = '',
+        string $masterkey = '',
+        string $index = ''
     ): void
     {
         $this->setHostname($hostname);
@@ -61,7 +61,11 @@ class MeilisearchClient
      */
     public function setHostname(string $hostname): MeilisearchClient
     {
-        $this->hostname = $hostname;
+        if(empty($hostname)) {
+            $this->hostname = Constants::SERVER_NAME;
+        } else {
+            $this->hostname = $hostname;
+        }
         return $this;
     }
 
@@ -79,7 +83,11 @@ class MeilisearchClient
      */
     public function setPort(string $port): MeilisearchClient
     {
-        $this->port = $port;
+        if(empty($port)) {
+            $this->port = Constants::SERVER_PORT;
+        } else{
+            $this->port = $port;
+        }
         return $this;
     }
 
@@ -97,7 +105,11 @@ class MeilisearchClient
      */
     public function setMasterKey(string $masterKey): MeilisearchClient
     {
-        $this->masterKey = $masterKey;
+        if(empty($masterKey)) {
+            $this->masterKey = Constants::SERVER_MASTER_KEY;
+        } else {
+            $this->masterKey = $masterKey;
+        }
         return $this;
     }
 
@@ -115,7 +127,11 @@ class MeilisearchClient
      */
     public function setIndex(string $index): MeilisearchClient
     {
-        $this->index = $index;
+        if(empty($index)) {
+            $this->index = Constants::PATTERN_INDEX;
+        } else {
+            $this->index = $index;
+        }
         return $this;
     }
 
@@ -132,18 +148,6 @@ class MeilisearchClient
      */
     public function setClient(): void
     {
-        if (!$this->getHostname()) {
-            $this->setHostname(Constants::SERVER_NAME);
-        }
-
-        if (!$this->getPort()) {
-            $this->setPort(Constants::SERVER_PORT);
-        }
-
-        if (!$this->getMasterKey()) {
-            $this->client = (new Client($this->getHostname() . ":" . $this->getPort()));
-        } else {
-            $this->client = (new Client($this->getHostname() . ":" . $this->getPort(), $this->getMasterKey()));
-        }
+        $this->client = (new Client($this->getHostname() . ":" . $this->getPort(), $this->getMasterKey()));
     }
 }
